@@ -1,17 +1,11 @@
 <template name='entrySignIn'>
-  <div class="container">
     <div class="row">
-      {{#if logo}}
-        <div class="entry-logo">
-            <a href="/"><img src="{{logo}}" alt="logo"></a>
-        </div>
-      {{/if}}
       <div class="entry col-md-4 col-md-offset-4">
         {{#if otherLoginServices}}
         <div class="entry-social">
-          {{#each loginServices}}
-            {{> entrySocial}}
-          {{/each}}
+          <!--{{#each loginServices}}-->
+            {{> entrySocial 'facebook'}}
+          <!--{{/each}}-->
           {{#if passwordLoginService}}
           <div class="email-option">
             <strong class="line-thru or-sign-in">{{t9n "OR"}}</strong>
@@ -44,5 +38,4 @@
         {{/if}}
       </div>
     </div>
-  </div>
 </template>

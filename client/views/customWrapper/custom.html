@@ -1,0 +1,27 @@
+<template name="customSignInWrapper">
+    {{#if loggedInNotType}}
+      {{> fanLogin}}
+    {{else}}
+      {{> entrySignIn}}
+    {{/if}}
+</template>
+
+<template name="customSignUpWrapper">
+    {{#if loggedInNotType}}
+      {{> fanLogin}}
+    {{else}}
+      {{> entrySignIn}}
+    {{/if}}
+</template>
+
+<template name="fanLogin">
+  <div class="row fan-login text-center">
+    <h4 class="text-center">Get Started Now!</h4>
+    <div class="entry entry-organization col-xs-12 col-md-4 col-md-offset-4 text-cemters">
+      <h5>Tell us who you are?</h5>
+      <button class="btn btn-athlete">Athlete</button>
+      <strong>OR</strong>
+      <button class="btn btn-sponsor">Sponsor</button>
+    </div>
+  </div>
+</template>

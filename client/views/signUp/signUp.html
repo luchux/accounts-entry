@@ -11,9 +11,9 @@
         {{#if otherLoginServices}}
           <p class="entry-signin-cta">{{t9n "ifYouAlreadyHaveAnAccount"}} <a href="{{pathFor 'entrySignIn'}}">{{t9n "signin"}}</a>.</p>
           <div class="entry-social">
-            {{#each loginServices}}
-              {{> entrySocial}}
-            {{/each}}
+            <!--{{#each loginServices}}-->
+              {{> entrySocial 'facebook'}}
+            <!-- {{/each}} -->
             {{#if passwordLoginService}}
               <div class="email-option">
                 <strong class="line-thru">{{t9n "OR"}}</strong>

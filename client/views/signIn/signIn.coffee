@@ -27,26 +27,32 @@ AccountsEntry.entrySignInHelpers = {
 }
 
 AccountsEntry.entrySignInEvents = {
-  'submit #signIn': (event) ->
+  'submit #signIn': (event, template) ->
     event.preventDefault()
 
-    email = $('input[name="email"]').val()
+    email = template.$('input[name="email"]').val()
     if (AccountsEntry.isStringEmail(email) and AccountsEntry.settings.emailToLower) or
      (not AccountsEntry.isStringEmail(email) and AccountsEntry.settings.usernameToLower)
       email = email.toLowerCase()
 
     Session.set('email', email)
-    Session.set('password', $('input[name="password"]').val())
+    Session.set('password', template.$('input[name="password"]').val())
 
     Meteor.loginWithPassword(Session.get('email'), Session.get('password'), (error)->
       Session.set('password', undefined)
       if error
         T9NHelper.accountsError error
-      else if Session.get('fromWhere')
-        Router.go Session.get('fromWhere')
-        Session.set('fromWhere', undefined)
+      else if Meteor.user().type()
+        if Session.get('fromWhere')
+          Router.go Session.get('fromWhere')
+          Session.set('fromWhere', undefined)
+        else
+          Router.go AccountsEntry.settings.dashboardRoute
       else
-        Router.go AccountsEntry.settings.dashboardRoute
+        Session.set('iam')
+        if Router.current()?.location?.get()?.originalUrl is not '/'
+            Router.go '/'
+
     )
 }
 

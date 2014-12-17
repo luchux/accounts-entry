@@ -18,16 +18,30 @@ Meteor.startup ->
     entryCreateUser: (user) ->
       check user, Object
       profile = AccountsEntry.settings.defaultProfile || {}
-      if user.username
+      # both username & email provided
+      if user.username && user.email
         userId = Accounts.createUser
           username: user.username,
           email: user.email,
           password: user.password,
           profile: _.extend(profile, user.profile)
-      else
+      # only username provided
+      else if user.username && !user.email
+        userId = Accounts.createUser
+          username: user.username,
+          password: user.password,
+          profile: _.extend(profile, user.profile)
+      # only email provided
+      else if user.email && !user.username
         userId = Accounts.createUser
           email: user.email
           password: user.password
           profile: _.extend(profile, user.profile)
       if (user.email && Accounts._options.sendVerificationEmail)
         Accounts.sendVerificationEmail(userId, user.email)
+
+
+    setTypeUser: (type) ->
+      user_id = Meteor.userId()
+      if user_id and type
+        Meteor.users.update({ _id: user_id }, {$set: {"profile.type": type}})

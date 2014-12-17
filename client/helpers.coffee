@@ -28,6 +28,7 @@ UI.registerHelper 'otherLoginServices', ->
   Accounts.oauth.serviceNames().length > 0
 
 UI.registerHelper 'loginServices', ->
+  console.log Accounts.oauth.serviceNames()
   Accounts.oauth.serviceNames()
 
 UI.registerHelper 'showSignupCode', ->

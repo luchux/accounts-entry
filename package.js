@@ -1,8 +1,8 @@
 Package.describe({
     summary: "Make signin and signout their own pages with routes.",
     version: '1.0.3',
-    name: "joshowens:accounts-entry",
-    githubUrl: 'https://github.com/Differential/accounts-entry',
+    name: "luchux:accounts-entry",
+    githubUrl: 'https://github.com/luchux/accounts-entry',
 });
 
 Package.onUse(function(api) {
@@ -56,7 +56,9 @@ Package.onUse(function(api) {
     'client/t9n/portuguese.coffee',
     'client/t9n/slovene.coffee',
     'client/t9n/russian.coffee',
-    'client/t9n/arabic.coffee'
+    'client/t9n/arabic.coffee',
+    'client/views/customWrapper/custom.html',
+    'client/views/customWrapper/custom.coffee',
   ], 'client');
 
   // SERVER

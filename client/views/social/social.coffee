@@ -26,13 +26,19 @@ Template.entrySocial.events
   'click .btn': (event)->
     event.preventDefault()
     serviceName = $(event.target).attr('id').replace 'entry-', ''
+
     callback = (err) ->
+
       if (!err)
-        if Session.get('fromWhere')
-          Router.go Session.get('fromWhere')
-          Session.set('fromWhere', undefined)
+        if Meteor.user().type()
+          if Session.get('fromWhere')
+            Router.go Session.get('fromWhere')
+            Session.set('fromWhere', undefined)
+          else
+            Router.go AccountsEntry.settings.dashboardRoute
         else
-          Router.go AccountsEntry.settings.dashboardRoute
+          Session.set('iam')
+
       else if (err instanceof Accounts.LoginCancelledError)
         # do nothing
       else if (err instanceof ServiceConfiguration.ConfigError)
@@ -50,6 +56,8 @@ Template.entrySocial.events
 
     if (Accounts.ui._options.requestOfflineToken and Accounts.ui._options.requestOfflineToken[serviceName])
       options.requestOfflineToken = Accounts.ui._options.requestOfflineToken[serviceName]
+
+    options = _.extend(options, {"profile.type":"brand"})
 
     loginWithService(options, callback)
 

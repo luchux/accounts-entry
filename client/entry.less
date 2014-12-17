@@ -1,4 +1,5 @@
 .entry-logo {
+  text-align:center;
   width: 300px;
   margin: auto;
   margin-top: 40px;
@@ -39,6 +40,15 @@
   .entry-agreement {
     margin-top: 20px;
     font-size: 13px;
+  }
+
+  h5{
+    color: black;
+    font-size: 16px;
+    text-align: center;
+  }
+  strong{
+    color: black;
   }
 }
 
@@ -99,6 +109,7 @@
         background: #555;
       }
     }
+
   }
 }
 
@@ -119,10 +130,10 @@
 
     &:before {
       width: 40px;
-      height: 10px;
+      height: 14px;
       background-color: #fff;
       content: '';
-      margin: -5px 0 0 -20px;
+      margin: -7px 0 0 -20px;
       left: 50%;
       position: absolute;
       top: 50%;
@@ -157,6 +168,10 @@
     font-size: 16px;
     padding: 10px 12px;
     margin-top: 25px;
+    background-color: #8dff00;
+    &:hover{
+      background-color: #7ADC00;
+    }
   }
 }
 
@@ -169,3 +184,27 @@
 .entry-sign-out {
   cursor: pointer;
 }
+
+.entry-organization{
+
+    .btn-athlete, .btn-sponsor{
+    color: #FFFFFF;
+    background-color: #FF5100;
+    border-color: #D14808;
+  }
+
+  .btn-athlete:hover,
+  .btn-athlete:focus,
+  .btn-athlete:active,
+  .btn-athlete.active,
+  .btn-sponsor:hover,
+  .btn-sponsor:focus,
+  .btn-sponsor:active,
+  .btn-sponsor.active,
+  .open .dropdown-toggle.btn-athlete {
+    color: #FFFFFF;
+    background-color: #E04C07;
+    border-color: #D14808;
+  }
+}
+

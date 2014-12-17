@@ -8,7 +8,8 @@ AccountsEntry =
     usernameToLower: false
     entrySignUp: '/sign-up'
     extraSignUpFields: []
-    showOtherLoginServices: true
+    showOtherLoginServices: false
+    showServices: ['facebook']
 
   isStringEmail: (email) ->
     emailPattern = /^([\w.-]+)@([\w.-]+)\.([a-zA-Z.]{2,6})$/i
